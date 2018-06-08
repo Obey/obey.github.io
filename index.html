@@ -1,16 +1,10 @@
 <?
 //add_header "X-Content-Type-Options" "nosniff";
 //add_header X-Frame-Options SAMEORIGIN;
-  $request = count($_POST) > 0 ? $_POST : $_GET;
-    $name = $request['name'] ? $request['name'] : "antropogenez";
-    $row_limit = $request['row_limit'] ? $request['row_limit'] : "1";
-    $width = $request['width'] ? $request['width'] : "auto";
-    $width = $request['post_limit'] ? $request['post_limit'] : "0";
-    $dont_load_posts = $request['dont_load_posts'] ? $request['dont_load_posts'] : "1";
-    $elemw = $request['elemw'] ? $request['elemw'] : "350";
-    $sort = $request['sort'] ? $request['sort'] : "created_asc";
-    $width = $request['status_type'] ? $request['status_type'] : "all";
+
+
 ?>
+
     <!-- подключаемые файлы --- НАЧАЛО -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://all2grid.com/FW/embed/js/freewall.js"></script>
@@ -42,7 +36,19 @@
      document.getElementById("modal01").style.display = "block";
    }
    </script>
+    <script>
+    $(document).ready(function(){
+        $(".rele").click(function(){
+            $(".sq2").toggle(1000);
+            $(".ln2").toggle(1000);
+        });
+        $(".releall").click(function(){
+            $(".menudiv").toggle(1000);
+            $(".rele").toggle(1000);
 
+        });
+    });
+    </script>
     <script>
 
     // When the user clicks on the button, scroll to the top of the document
@@ -53,17 +59,46 @@
     </script>
 
 
+    <!-- Compiled and minified CSS -->
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+
+       <!-- Compiled and minified JavaScript -->
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
         <body>
 
+          <div class="w3-center container" style="border-bottom: 0px solid grey;">
+            <div class="fixed-action-btn">
+              <a class="btn-floating btn-large red">
+                <i class="large material-icons">mode_edit</i>
+              </a>
+              <ul>
+                <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+                <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+                <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+                <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+              </ul>
+            </div>
+            <script>  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.fixed-action-btn');
+    var instances = M.FloatingActionButton.init(elems, options);
+  });
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('.fixed-action-btn').floatingActionButton();
+  });</script>
+          </div>
 
 
-<div class="content" style="">
-<?
-// $sort = "rand"
-// $sort = "created_asc"
-// $sort = "created_desc"
-?>
-  <script src="https://all2grid.com/FW/embed/app.js/?name=<?=$name;?>&width=<?=$width;?>&row_limit=<?=$row_limit;?>&post_limit=<?=$post_limit;?>&dont_load_posts=<?=$dont_load_posts;?>&elemw=<?=$elemw;?>&sort=<?=$sort;?>&status_type=<?=$status_type;?>"></script>
+
+<div  class="content" style="">
+
+
+<hr />
+
+  <script src="https://all2grid.com/FW/embed/app.js/?name=antropogenez&width=auto&row_limit=1&post_limit=0&dont_load_posts=1&elemw=300"></script>
 
   <!-- сетка, в которую программно будут добавлены элементы --- НАЧАЛО -->
   <div id="fw_wrapper" style="margin-top:2px;">
@@ -89,6 +124,7 @@
 
 <br />
 
+
 <div class="w3-container">
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
@@ -111,9 +147,6 @@ function myFunction() {
   }
 }
 </script>
-
-
-
 
 
 </body>
