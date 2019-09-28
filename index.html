@@ -1,68 +1,99 @@
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<div  class="parallaxtrue p-0">
+<div class="clouds"></div>
+<div></div>
+<div></div>
+<div></div>
 
-
-<script src="https://all2grid.com//bitrix/templates/.default/components/bitrix/news.list/freewall/js/freewall.js"></script>
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-
-
-
-<script>
-    $(function()  {
-      window.wall = new Freewall("#fw_container");
-		wall.reset({
-			cellW:  260,
-			cellH: 'auto',
-animate: true,
-draggable: true,
-
-  gutterY: 0,
-  gutterX: 18
-		})
-      wall.fitWidth();
-setInterval(function(){ wall.refresh() },300)
-
-    });
-  </script>
-
-
-<div id="fw_container">
-
-      <div class="fb-post fw_element" data-href="https://www.facebook.com/photo.php?fbid=1748514382048706&amp;set=a.1449460761954071.1073741828.100006704823246&amp;type=3" data-width="auto" data-show-text="true"> </div>
-
-</div>
-
-
-
-	<style>
-
-  .fb-post
-        {
-          background: #fff;
-        }
-
-		i {display:none;}
-
-
-div.news-list
-{
-	word-wrap: break-word;
+ </div>
+ <style>
+.parallaxtrue {
+  .gradient(lightblue, white);
+  overflow: hidden;
+  min-height: 500px;
+  font-family: Verdana;
+  text-shadow: 1px 1px 1px black;
 }
-div.news-list img.preview_picture
-{
-	float:left;
-	margin:0 4px 6px 0;
+
+a.clouds {
+  background-color: rgba(0,0,0,.5);
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  transition: background-color .3s;
+  margin-left: -6px;
+  &:hover {
+    background-color: rgba(0,0,0,.7);
+  }
 }
-.news-date-time {
-	color:#486DAA;
-}</style>
+
+div.clouds {
+  z-index: 2;
+  position: absolute;
+  top: 0px;
+  width: 250px;
+  height: 200px;
+  .gradient(white, grey);
+  border-radius: 100%;
+  opacity: 0;
+  filter: blur(20px);
+  -webkit-filter: blur(20px);
+  &::before, &::after {
+    position: relative;
+    width: 150px;
+    height: 100px;
+    content: " ";
+    display: block;
+    left: -80px;
+    top: 100px;
+    border-radius: 100%;
+    .gradient(white, grey);
+  }
+  &::after {
+    left: 200px;
+    height: 80px;
+    top: -50px;
+  }
+  
+  &:nth-child(1) {  .move(31, 175px, 20px);}
+  &:nth-child(2) {  .move(25, 100px, 20px);}
+  &:nth-child(3) {  .move(28, 150px, 130px);}
+  &:nth-child(4) {  .move(20, 200px, 100px);}
+  &:nth-child(5) {  .move(27, 125px, 50px);}
+  &:nth-child(6) {  .move(22, 150px, 50px);}
+  &:nth-child(7) {  .move(28, 225px, 75px);}
+  &:nth-child(8) {  .move(30, 505px, 60px);}
+  &:nth-child(9) {  .move(25, 375px, 140px);}
+  &:nth-child(10) { .move(23, 525px, 70px);}
+  &:nth-child(11) { .move(22, 375px, 50px);}
+  &:nth-child(12) { .move(25, 275px, 60px);}
+}
+
+.move(@speed, @x, @y) {
+  animation: moving (@speed * 1s);
+  animation-iteration-coint: infinite;
+  animation-timing-function: linear;
+  -webkit-animation: moving (@speed * 1s);
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  left: @x;
+  top: @y; 
+}
+
+@-webkit-keyframes moving {
+    0% {margin-left: 0%; opacity: 0;}
+    10% {opacity: 1;}
+    100% {margin-left: 100%;}
+}
+@keyframes moving {
+    0% {margin-left: 0%; opacity: 0;}
+    10% {opacity: 1;}
+    100% {margin-left: 100%;}
+}
+
+.gradient(@start, @end) {
+  background: -webkit-linear-gradient(@start, @end);
+  background:      -o-linear-gradient(@start, @end);
+  background:    -moz-linear-gradient(@start, @end);
+  background:         linear-gradient(@start, @end);
+}	 
+</style>	 
